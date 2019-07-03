@@ -29,7 +29,7 @@ fn missing_opts(mut config: Config, config_file: String) -> Config {
         }
 
         if config.user_token == None {
-            config.server_id = Some(config_file_options["user_token"].as_i64().unwrap() as u64);
+            config.user_token = Some(config_file_options["user_token"].as_str().unwrap().to_owned());
         }
     }
 
