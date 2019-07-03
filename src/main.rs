@@ -3,6 +3,7 @@ extern crate clap;
 extern crate discord;
 
 mod command;
+mod config_file;
 
 #[derive(Debug)]
 pub struct Config {
@@ -17,6 +18,7 @@ pub struct Config {
 
 fn main() {
     let mut config: Config = command::get_opts();
+    config = config_file::read(config);
 
     println!("{:?}", config);
 }

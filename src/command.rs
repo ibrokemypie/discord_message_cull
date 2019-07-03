@@ -3,6 +3,7 @@ extern crate clap;
 
 use crate::Config;
 use clap::{crate_version, App, Arg};
+
 pub fn get_opts() -> Config {
     let matches = App::new("discord message cull")
                           .version(crate_version!())
@@ -15,22 +16,20 @@ pub fn get_opts() -> Config {
                         .arg(Arg::with_name("token")
                             .short("t").value_name("TOKEN")
                             .help("Sets the user token")
-                            .takes_value(true)
-                            .required(true))
+                            .takes_value(true))
                         .arg(Arg::with_name("server")
                             .short("s").value_name("SERVERID")
                             .help("Sets the server ID")
-                            .takes_value(true)
-                            .required(true))
+                            .takes_value(true))
                         .arg(Arg::from_usage("<STRING> 'String to search for'")
-                        .required(true))
-                          .get_matches();
+                            .required(true))
+                        .get_matches();
 
 
     let mut config = Config {
         config_file: matches
             .value_of("config")
-            .unwrap_or("config.yml")
+            .unwrap_or("config.yaml")
             .to_owned(),
         user_token: match matches.value_of("token") {
             Some(x) => Some(x.to_owned()),
