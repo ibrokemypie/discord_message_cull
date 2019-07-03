@@ -26,7 +26,7 @@ pub fn get_opts() -> Config {
                         .get_matches();
 
 
-    let mut config = Config {
+    let config = Config {
         config_file: matches
             .value_of("config")
             .unwrap_or("config.yaml")

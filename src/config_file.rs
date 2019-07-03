@@ -12,7 +12,7 @@ pub fn read(mut config: Config) -> Config {
         _ => {}
     }
 
-    if (config.search_string == None || config.server_id == None || config.user_token == None) {
+    if config.search_string == None || config.server_id == None || config.user_token == None {
         panic!("missing search string, server id or user token");
     }
 
